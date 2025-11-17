@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appointment Assistant</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -14,42 +14,42 @@
         <div class = "hero">
             <p class = "bigText">All of your medical appointments in one place.</p>
             <p class = "smallText">The modern, stress and frustration-free, way to book any medical appointment. </p>
-            <button class="button">Sign up</button>
+            <button class="button">Register now</button>
         </div>
-        <img class = "headerImage" src=".//images/doctors.jpg" alt="A Awesome Cat">
+        <img class = "headerImage" src=".//images/doctors.jpg" alt="Smiling Doctors">
     </div>
     <div class = "middle">
-        <p class = "middleText">Some random animals.</p>
-            <ul class="animals">
-                <li class="animalCard">
-                    <img src=".//images/otter.jpg" alt="Otter">
-                    <p class="infoText">A picture of a Otter.</p>
+        <p class = "middleText">The leading choice in online appointment booking services.</p>
+            <ul class="promo">
+                <li class="promoCard">
+                    <img src=".//images/laptop.jpg" alt="Laptop guy">
+                    <p class="infoText"> Book online, No phone call required.</p>
                 </li>
-                 <li class="animalCard">
-                    <img src=".//images/wolf.jpg" alt="Wolf">
-                    <p class="infoText">A picture of a Wolf.</p>
-                </li>
-                <li>
-                    <img src=".//images/skink.jpg" alt="Skink">
-                    <p class ="infoText">A picture of a Skink.</p>
+                 <li class="promoCard">
+                    <img src=".//images/doctalk.jpg" alt="Doctor talking">
+                    <p class="infoText"> Book with your preferred provider.</p>
                 </li>
                 <li>
-                    <img src=".//images/cuttle.jpg" alt="Cuttlefish">
-                    <p class ="infoText">A picture of a Cuttlefish</p>
+                    <img src=".//images/insurance.jpg" alt="Insurance">
+                    <p class ="infoText">Verify if your insurance is taken online.</p>
+                </li>
+                <li>
+                    <img src=".//images/calender.jpg" alt="Calender">
+                    <p class ="infoText">Update or cancel your appointment hassel free.</p>
                 </li>
             </ul>
     </div>
     <div class = "callContainer">
         <div class ="call">
             <div class = "container">
-                <p class = "callText">Call to action! It's time!</p>
-                <p class = "callSubtext">Sign up for our product by clicking that button right over there!</p>
+                <p class = "callText"> Already have an account? Log in here.</p>
+                <p class = "callSubtext"> Don't have a account? Register for a free account here.</p>
             </div>
-            <button class = "callButton">Sign up</button>
+            <button class = "callButton">Log in</button>
          </div>
     </div>
     <div class ="footer">
-        Copyright © The Website Creator.
+        Copyright © Appointment Assistant.
     </div>
 </body>
 </html>

@@ -1,0 +1,173 @@
+body {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    background-color: #E5E7EB;;
+    min-height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+}
+
+.logoSection {
+    background-image: url(.//images/photo-1585202900225-6d3ac20a6962.avif);
+    background-repeat: no-repeat;
+    background-size: cover; /* scales so it covers full height/width */
+    background-position: center; /* centers the image */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    width: 600px;
+}
+
+img {
+    width: 100px;
+}
+
+.logoSidebar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); 
+    font-size: 48px;
+    width: 100%;
+    margin-top: 200px;
+}
+
+h1 {
+    font-family: 'Odin', sans-serif;
+    color: white;
+}
+
+a {
+    color: inherit;
+}
+
+footer {
+    color: white;
+}
+
+.formSection {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    flex: 1;
+}
+
+.headerText {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 32px;
+    height: 27.3vh;
+    padding: 32px;
+
+}
+
+.text {
+    max-width: 850px;
+    font-weight: 500;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+fieldset {
+    border: 1px solid #ddd; 
+    border-radius: 6px;     
+    padding: 32px;          
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-group-wrapper {
+    display: flex;
+    gap: 32px;
+}
+
+.legend {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+input {
+    font-size: 18px;
+}
+
+.formColumn1 {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 300px;
+    padding: 5px 10px;;
+}
+
+.formColumn2 {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 300px;
+    padding: 5px 10px;
+}
+
+input {
+    border: solid 1px #E5E7EB;
+    border-radius: 4px;
+}
+
+input[type = "text"]:focus {
+    outline: 2px solid lightskyblue;
+}
+
+input[type = "email"]:focus {
+    outline: 2px solid lightskyblue;
+}
+
+input[type = "password"]:focus {
+    outline: 2px solid lightskyblue;
+}
+
+input[type = "tel"]:focus {
+    outline: 2px solid lightskyblue;
+}
+
+.submitButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 32px;
+    gap: 32px;
+}
+
+button {
+    background-color: #596D48;
+    color: white;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 18px;
+    width: 240px;
+    font-weight: bold;
+}
+
+.submitText {
+    font-size: 18px;
+}
+
+.login {
+    color: #596D48;
+    font-weight: bold;
+}
