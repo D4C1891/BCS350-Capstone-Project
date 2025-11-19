@@ -1,8 +1,9 @@
 body {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    background-color: #E5E7EB;;
+    background-color: #b0172b;;
     min-height: 100vh;
     width: 100vw;
     margin: 0;
@@ -13,38 +14,6 @@ body {
 
 .container {
     display: flex;
-}
-
-.logoSection {
-    background-image: url(.//images/photo-1585202900225-6d3ac20a6962.avif);
-    background-repeat: no-repeat;
-    background-size: cover; /* scales so it covers full height/width */
-    background-position: center; /* centers the image */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 100vh;
-    width: 600px;
-}
-
-img {
-    width: 100px;
-}
-
-.logoSidebar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5); 
-    font-size: 48px;
-    width: 100%;
-    margin-top: 200px;
-}
-
-h1 {
-    font-family: 'Odin', sans-serif;
-    color: white;
 }
 
 a {
@@ -66,7 +35,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    font-size: 32px;
+    font-size: 48px;
     height: 27.3vh;
     padding: 32px;
 
@@ -75,6 +44,7 @@ footer {
 .text {
     max-width: 850px;
     font-weight: 500;
+    color: white;
 }
 
 form {
@@ -151,7 +121,7 @@ input[type = "tel"]:focus {
 }
 
 button {
-    background-color: #596D48;
+    background-color: #b0172b;
     color: white;
     padding: 12px 28px;
     border: none;
@@ -161,13 +131,15 @@ button {
     padding: 18px;
     width: 240px;
     font-weight: bold;
+    border: 3px solid black;
 }
 
 .submitText {
-    font-size: 18px;
+    font-size: 24px;
+    color: white;
 }
 
 .login {
-    color: #596D48;
+    color: white;
     font-weight: bold;
 }

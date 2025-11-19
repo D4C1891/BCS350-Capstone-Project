@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Database Test</title>
-</head>
-<body>
-    <?php
-    $conn = new mysqli("localhost","root", "", "Appointment_Assistant");
-    
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    echo "Connected Successfully!"
-    ?>
-    
-</body>
-</html>
+<?php
+$host = "localhost";
+$dbname = "Appointment_Assistant";
+$username = "root";
+$password = "";
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Database connection failed: " . $e->getMessage());
+}
