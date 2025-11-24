@@ -14,7 +14,7 @@
         <div class = "hero">
             <p class = "bigText">All of your medical appointments in one place.</p>
             <p class = "smallText">The modern, stress and frustration-free, way to book any medical appointment. </p>
-            <button class="button">Register now</button>
+            <a href="register.php" class="button">Register now</a>
         </div>
         <img class = "headerImage" src=".//images/doctors.jpg" alt="Smiling Doctors">
     </div>
@@ -43,9 +43,9 @@
         <div class ="call">
             <div class = "container">
                 <p class = "callText"> Already have an account? Log in here.</p>
-                <p class = "callSubtext"> Don't have a account? Register for a free account here.</p>
+                <p class = "callSubtext"> Don't have a account? Register for a free account</p><a href = "http://www.localhost/BCS350-Capstone-Project/register.php">here.</a>
             </div>
-            <button class = "callButton">Log in</button>
+            <a href="login.php" class="callButton">Log in</a>
          </div>
     </div>
     <div class ="footer">

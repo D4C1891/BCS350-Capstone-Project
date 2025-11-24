@@ -52,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     ]);
 
     echo "Registration successful!";
+    header("Location: login.php");
 }
 ?>
 
@@ -102,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                 
                 <div class = "submitButton">
                     <button type="submit">Create Account</button>
-                    <p class = "submitText">Already have an account? <span class = "login">Log in</span></p>
+                    <p class = "submitText">Already have an account? <span class = "login"><a href = "login.php">Log in</a></span></p>
                 </div>  
             </form>
         </div>
