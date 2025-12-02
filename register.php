@@ -18,10 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
             die("All fields are required.");
     }
 
+    // Makes sure email format is valid.
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         die("Invalid email format");
     }
 
+    // Makes sure passwords match.
     if ($password !== $confirm) {
         die("Passwords do not match.");
     }
@@ -38,12 +40,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // This MySQL statement will insert the information inputted into the database.
-    $stmt = $pdo->prepare(
+    $statement = $pdo->prepare(
         "INSERT INTO Users (FirstName, LastName, Email, PhoneNumber, password)
         VALUES (:first, :last, :email, :phone, :password)"
     );
 
-    $stmt->execute([
+    $statement->execute([
         ":first" => $firstName,
         ":last" => $lastName,
         ":email" => $email,
@@ -74,7 +76,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                 </div>
             </div>
             
-            <form action = "register.php" method="POST">
+            <div id="errorBox" style="color: white; font-weight: bold;"></div>
+            <form id ="regForm" action = "register.php" method="POST" novalidate>
                 <fieldset>
                 <p class = "legend">Registration Information</p>
                     <div class = "form-group-wrapper">
@@ -108,5 +111,71 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
             </form>
         </div>
     </div>
+    
+
+    <script>
+        document.getElementById("regForm").addEventListener("submit", function(e) {
+
+            const first = document.getElementById("first_name").value.trim();
+            const last = document.getElementById("last_name").value.trim();
+            const email = document.getElementById("user_email").value.trim();
+            const phone = document.getElementById("phone_number").value.trim();
+            const password = document.getElementById("user_password").value;
+            const confirm = document.getElementById("confirm_password").value;
+            const errorBox = document.getElementById("errorBox");
+            
+            errorBox.textContent = "";
+
+            // Email regex.
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            // Phone regex.
+            const phonePattern = /^(\d{3}-?\d{3}-?\d{4})$/;
+
+            // Required fields.
+            if (!first || !last || !email || !phone || !password || !confirm) {
+                errorBox.textContent = "Please fill out all fields.";
+                e.preventDefault();
+                return;
+            }
+
+            // Email validation.
+            if (!emailPattern.test(email)) {
+                errorBox.textContent = "Please enter a valid email address.";
+                e.preventDefault();
+                return;
+            }
+
+            // Phone number validation
+            if (!phonePattern.test(phone)) {
+                errorBox.textContent = "Phone number must be 123-456-7890 or 1234567890.";
+                e.preventDefault();
+                return;
+            }
+
+            // Strong Password Validation.
+            let passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/;
+
+            if (!passwordPattern.test(password)) {
+                errorBox.textContent = "Password must be at least 8 characters long and include:\n- One uppercase letter\n- One lowercase letter\n- One number";
+                e.preventDefault();
+                return;
+            }
+
+            // Ensures Password length.
+            if (password.length < 8) {
+                errorBox.textContent = "Password must be at least 8 characters long.";
+                e.preventDefault();
+                return;
+            }
+
+            // Ensures Password match.
+            if (password !== confirm) {
+                errorBox.textContent = "Passwords do not match.";
+                e.preventDefault();
+                return;
+            }
+        });
+    </script>
 </body>
 </html>

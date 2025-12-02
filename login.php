@@ -7,26 +7,30 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $email = trim($_POST["user_email"]);
     $password = trim ($_POST["user_password"]);
 
+    //  Verifys fields are not empty.
     if (empty($email) || empty($password)) {
-        die("All fields are required");
+        header("Location: login.php?error=empty");
+        exit;
     }
 
     // Selects the users information by email.
-    $stmt = $pdo->prepare("SELECT UserID, password, FirstName FROM Users WHERE Email = ?");
-    $stmt->execute([$email]);
+    $statement = $pdo->prepare("SELECT UserID, password, FirstName FROM Users WHERE Email = ?");
+    $statement->execute([$email]);
 
-    if($stmt->rowCount() === 0) {
-        die("Invalid email or password.");
+    if ($statement->rowCount() === 0) {
+        header("Location: login.php?error=invalid");
+        exit;
     }
 
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-    //Verifys password hash.
+    //  Verifys password hash.
     if (!password_verify($password, $user["password"])) {
-        die("Invalid email or password.");
+        header("Location: login.php?error=invalid");
+        exit;
     }
 
-    //On successful login, stores the users info in a session.
+    // On successful login, stores the users info in a session.
     $_SESSION["UserID"] = $user["UserID"];
     $_SESSION["FirstName"] = $user["FirstName"];
 
@@ -53,7 +57,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 </div>
             </div>
             
-            <form action = "login.php" method="POST">
+            <div id="errorBox" style="color: white; font-weight: bold;"></div>
+            <form id = "loginForm" action = "login.php" method="POST" novalidate>
                 <fieldset>
                 <p class = "legend">Login Information</p>
                     <div class = "form-group-wrapper">
@@ -72,5 +77,45 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             </form>
         </div>
     </div>
+
+<script>
+    
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+    const email = document.getElementById("user_email").value.trim();
+    const password = document.getElementById("user_password").value;
+    const errorBox = document.getElementById("errorBox");
+
+    errorBox.textContent = "";
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    // Ensures both fields are not empty.
+    if (!email || !password) {
+        errorBox.textContent = "Please fill out all fields.";
+        e.preventDefault();
+        return;
+    }
+
+    // Ensures email address format is valid.
+    if (!emailPattern.test(email)) {
+        errorBox.textContent = "Please enter a valid email address.";
+        e.preventDefault();
+        return;
+    }
+});
+
+// Ensures that server-side errors are displayed within the error box.
+    document.addEventListener("DOMContentLoaded", function() {
+        const error = "<?php echo $_GET['error'] ?? ''; ?>";
+        const errorBox = document.getElementById("errorBox");
+
+        if (error === "empty") {
+            errorBox.textContent = "Please fill out all fields.";
+        } else if (error === "invalid") {
+        errorBox.textContent = "Invalid email or password.";
+        }
+    });
+
+</script>
 </body>
 </html>
