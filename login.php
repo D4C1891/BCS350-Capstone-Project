@@ -30,6 +30,16 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         exit;
     }
 
+    // Creates a cookie that will remember the users email for future logins for 30 days.
+    if (isset($_POST['remember_email'])) {
+        setcookie("saved_email", $email, time() + (86400 * 30), "/"); // 30 days
+    } 
+    
+    // If unchecked, delete cookie
+    else {
+    setcookie("saved_email", "", time() - 3600, "/");
+}
+
     // On successful login, stores the users info in a session.
     $_SESSION["UserID"] = $user["UserID"];
     $_SESSION["FirstName"] = $user["FirstName"];
@@ -64,10 +74,17 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                     <div class = "form-group-wrapper">
                         <div class = "formColumn1">    
                             <label for="user_email">Email</label>
-                            <input type="email" id="user_email" name="user_email" required placeholder="johnsmith123@mail.com">
+                            <input type="email" id="user_email" name="user_email" 
+                             value="<?php echo isset($_COOKIE['saved_email']) ? htmlspecialchars($_COOKIE['saved_email']) : ''; ?>"
+                             required placeholder="johnsmith123@mail.com">
 
                             <label for="user_password">Password</label>
                             <input type="password" name="user_password" id="user_password" required>
+
+                            <label style="color:black;">
+                                <input type="checkbox" name="remember_email" value="1">
+                                Remember my email
+                            </label>
                         </div>
                     </div>
                 </fieldset>
