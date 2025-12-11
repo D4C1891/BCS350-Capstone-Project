@@ -1,3 +1,22 @@
+<?php
+session_start();
+
+// If user is not logged in, send them away
+if (!isset($_SESSION["UserID"])) {
+    header("Location: login.php");
+    exit;
+}
+
+// Get user's first name from session
+$firstName = $_SESSION["FirstName"] ?? "User";
+
+// Appointment booking success message handling
+$successMessage = "";
+if (isset($_GET['success']) && $_GET['success'] === 'booked') {
+    $successMessage = "Your appointment has been successfully booked!";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,20 +27,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <nav>
-        
-            <h1>Dashboard</h1>
+   
+    <?php if (isset($_GET["success"])): ?>
+        <div class="success-box">
+            <?php if ($_GET["success"] === "booked"): ?>
+                Appointment successfully booked!
+            <?php elseif ($_GET["success"] === "updated"): ?>
+                Appointment successfully updated!
+            <?php elseif ($_GET["success"] === "canceled"): ?>
+                Appointment successfully canceled!
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
 
+    <div class="container">
+        
+        <nav>
+            <h1>Dashboard</h1>
         </nav>
 
         <div class= "header">
-                <div class = "greeter">
-                    <div class = "greeter-text">
-                        <p class = "hi">Hi there,</p>
-                        <p class = "id">Joseph Mckenna</p>
-                    </div>
+            <div class = "greeter">
+                <div class = "greeter-text">
+                    <p class = "hi">Hi there,</p>
+                    <p class="id"><?php echo htmlspecialchars($firstName); ?></p>
                 </div>
+            </div>
         </div>
 
         <div class = "article">

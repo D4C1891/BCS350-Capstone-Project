@@ -115,7 +115,6 @@ h1 {
     font-size: 38px;
 }
 
-
 .card-container {
     display: grid;
     gap: 50px;
@@ -129,10 +128,16 @@ a {
     color: #b0172b;
 }
 
-li:last-child {
-    border-bottom: none;
-}
-
-ul {
-    list-style-type: none;
+.success-box {
+    background-color: #b0172b;
+    color: white;
+    padding: 15px 20px;
+    margin: 15px 0;
+    width: 100%;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    font-size: 18px;
 }

@@ -59,7 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 </head>
 <body>
     <div class = "container">
-    </div>
         <div class = "formSection">
             <div class = "headerText">
                 <div class = "text">
@@ -74,6 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                     <div class = "form-group-wrapper">
                         <div class = "formColumn1">    
                             <label for="user_email">Email</label>
+
+                            <!-- Pre-fills the input if the cookie exists. -->
                             <input type="email" id="user_email" name="user_email" 
                              value="<?php echo isset($_COOKIE['saved_email']) ? htmlspecialchars($_COOKIE['saved_email']) : ''; ?>"
                              required placeholder="johnsmith123@mail.com">
@@ -91,6 +92,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 
                 <div class = "submitButton">
                     <button type="submit">Log in</button>
+                </div>
+                
             </form>
         </div>
     </div>
