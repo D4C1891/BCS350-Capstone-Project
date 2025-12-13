@@ -10,11 +10,6 @@ if (!isset($_SESSION["UserID"])) {
 // Get user's first name from session
 $firstName = $_SESSION["FirstName"] ?? "User";
 
-// Appointment booking success message handling
-$successMessage = "";
-if (isset($_GET['success']) && $_GET['success'] === 'booked') {
-    $successMessage = "Your appointment has been successfully booked!";
-}
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +22,8 @@ if (isset($_GET['success']) && $_GET['success'] === 'booked') {
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-   
+    
+    <!--  PhP to display a success message upon successful booking, updating, or deleting. -->
     <?php if (isset($_GET["success"])): ?>
         <div class="success-box">
             <?php if ($_GET["success"] === "booked"): ?>
@@ -50,6 +46,7 @@ if (isset($_GET['success']) && $_GET['success'] === 'booked') {
             <div class = "greeter">
                 <div class = "greeter-text">
                     <p class = "hi">Hi there,</p>
+                    <!-- PhP to show the users firstname and a greeting upon login. -->
                     <p class="id"><?php echo htmlspecialchars($firstName); ?></p>
                 </div>
             </div>
